@@ -1,3 +1,5 @@
+package com.slyfawkes.plugin;
+
 import com.intellij.execution.configurations.GeneralCommandLine;
 import com.intellij.execution.filters.TextConsoleBuilder;
 import com.intellij.execution.filters.TextConsoleBuilderFactory;
@@ -13,17 +15,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-public class pylintRunner extends AnAction {
+public class PylintRunner extends AnAction {
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(pylintRunner.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(PylintRunner.class);
 
-    public void actionPerformed(AnActionEvent anActionEvent) {
-        // TODO: insert action logic here
+    @Override
+    public void actionPerformed(final AnActionEvent anActionEvent) {
         LOGGER.info("Things are happening");
         Project project = anActionEvent.getProject();
-
-
-
 
         if (project != null) {
             project.save();
@@ -34,7 +33,7 @@ public class pylintRunner extends AnAction {
         }
     }
 
-    private void runPylint(String path, Project project) {
+    private void runPylint(final String path, final Project project) {
         TextConsoleBuilderFactory textConsoleBuilderFactory = new TextConsoleBuilderFactoryImpl();
         TextConsoleBuilder textConsoleBuilder = textConsoleBuilderFactory.createBuilder(project);
         ToolWindowManager manager = ToolWindowManager.getInstance(project);
@@ -56,7 +55,7 @@ public class pylintRunner extends AnAction {
             LOGGER.info(consoleView.toString());
 
         } catch (Exception ex) {
-            LOGGER.error(ex.getMessage());
+            LOGGER.error(ex.getMessage(), ex);
         }
     }
 }
