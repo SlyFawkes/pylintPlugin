@@ -1,5 +1,5 @@
 <idea-plugin version="2">
-  <id>com.your.company.unique.plugin.id</id>
+  <id>com.dean.welch</id>
   <name>Plugin display name here</name>
   <version>1.0</version>
   <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
@@ -30,6 +30,9 @@
 
   <actions>
     <!-- Add your actions here -->
+    <action id="pylint.plugin.Run" class="pylintRunner" text="Pylint runner" description="Runs pylint">
+      <add-to-group group-id="ToolsMenu" anchor="first"/>
+    </action>
   </actions>
 
 </idea-plugin>
